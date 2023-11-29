@@ -1,6 +1,6 @@
 from kubernetes import client, config, watch
 import logging
-from Models.Models import ExternalDNSRecord ExternalDNSRecord
+from Controller.Models.Models import ExternalDNSRecord, ExternalDNSRecord
 
 def watch_external_dns_records():
     config.load_kube_config()
@@ -23,6 +23,4 @@ def watch_external_dns_records():
         # Do something based on the event type
         # e.g., handle the resource creation, update, or deletion
 
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    watch_external_dns_records()
+

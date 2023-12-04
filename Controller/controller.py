@@ -2,8 +2,11 @@ from kubernetes import client, config, watch
 import logging
 from Controller.Models.Models import ExternalDNSRecord, ExternalDNSRecord
 
+
 def watch_external_dns_records():
     config.load_kube_config()
+    logger = logging.getLogger('DNS WATCHER')
+
     api = client.CustomObjectsApi()
     group = 'example.com'  # Change to your group
     version = 'v1'         # Change to your version
@@ -18,10 +21,11 @@ def watch_external_dns_records():
         spec = obj.get('spec')
 
         # Log the event
-        logging.info(f"Event: {event_type} {metadata['namespace']}/{metadata['name']}")
-        logging.info(f"dnsName: {spec['dnsName']} recordType: {spec['recordType']} Values: {', '.join(spec['values'])}")
+        logger.info(f"Event: {event_type} {metadata['namespace']}/{metadata['name']}")
+        logger.debug(f"dnsName: {spec['dnsName']} recordType: {spec['recordType']} Values: {', '.join(spec['values'])}")
 
         # Do something based on the event type
         # e.g., handle the resource creation, update, or deletion
+
 
 

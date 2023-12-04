@@ -5,10 +5,15 @@ A Python Controller to handle DNS Records created with project K8S-ExternalCoreD
 # Python Kubernetes Controller for ExternalDNSRecord
 
 This project contains a simple Python-based Kubernetes controller that watches for changes in `ExternalDNSRecord` custom resources and logs these events.
+The ExternalDNSRecord resource is a Custom Resource Definition created to control DNS record creation in external infrastructure such as Active Directory DNS.
+
+The resource creation (CRD) has a seperate project home here: https://github.com/KnutssonDevelopment/K8S-ExternalCoreDNS
 
 ## Description
 
 The controller uses the Kubernetes Python client to interact with the Kubernetes API. It watches for creation, update, and deletion of `ExternalDNSRecord` custom resources in a specified namespace and logs these events for demonstration purposes.
+
+In time is will include functionality to update AD DNS records. The updated will most likely be a PowerShell based module. 
 
 ## Prerequisites
 

@@ -1,6 +1,7 @@
-from kubernetes import client, config, watch
 import logging
+from kubernetes import client, config, watch
 from Controller.Models.Models import ExternalDNSRecord, ExternalDNSRecord
+from variables import domain
 
 
 def watch_external_dns_records():
@@ -8,7 +9,7 @@ def watch_external_dns_records():
     logger = logging.getLogger('DNS WATCHER')
 
     api = client.CustomObjectsApi()
-    group = 'example.com'  # Change to your group
+    group = domain  # Change to your group
     version = 'v1'         # Change to your version
     namespace = 'default'  # Change to the namespace you want to watch, or use None for all namespaces
     plural = 'externaldnsrecords'  # Change to your plural

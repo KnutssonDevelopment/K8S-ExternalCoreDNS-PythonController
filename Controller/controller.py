@@ -19,6 +19,7 @@ def watch_external_dns_records():
 
         # Log the event
         logging.info(f"Event: {event_type} {metadata['namespace']}/{metadata['name']}")
+        logging.info(f"dnsName: {spec['dnsName']} recordType: {spec['recordType']} Values: {', '.join(spec['values'])}")
 
         # Do something based on the event type
         # e.g., handle the resource creation, update, or deletion
